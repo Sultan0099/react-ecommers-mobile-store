@@ -7,6 +7,7 @@ const styles = {
   container: {
     width: "80%",
     justifyContent: "center",
+    position: "abolute",
     marginTop: "20px",
     margin: "0 auto"
   },
@@ -31,7 +32,7 @@ function Detail(props) {
   const { products, classes } = props;
   const product = products.filter(value => value.id === parseInt(id))[0];
   return (
-    <Grid container className={classes.container}>
+    <Grid container className={`${classes.container} page`}>
       <Grid item xs={12} sm={12} md={4} lg={4} className={classes.Grid}>
         <img src={product.img} alt="" className={classes.img} />
       </Grid>

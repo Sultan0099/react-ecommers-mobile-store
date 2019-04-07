@@ -6,13 +6,14 @@ import { connect } from "react-redux";
 
 const styles = {
   root: {
-    flexGorw: "1"
+    flexGorw: "1",
+    position: "absolute"
   }
 };
 function ProductContainer(props) {
   const { classes, products } = props;
   return (
-    <Grid container className={classes.root} spacing={16}>
+    <Grid container className={`${classes.root}`} spacing={16}>
       {products.map(data => {
         return <ProductCard key={data.id} data={data} />;
       })}

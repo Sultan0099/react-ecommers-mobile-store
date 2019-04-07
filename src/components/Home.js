@@ -10,6 +10,7 @@ const styles = theme => ({
     width: "85vw",
     marginTop: theme.spacing.unit * 2,
     margin: "0 auto",
+    position: "absolute",
     [theme.breakpoints.down("sm")]: {
       width: "100vw"
     },
@@ -23,7 +24,7 @@ class Home extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <Grid container className={classes.root}>
+      <Grid container className={`${classes.root} page`}>
         <Typography variant="h3" align="center" className={classes.gorw}>
           Mobile To Sell
         </Typography>

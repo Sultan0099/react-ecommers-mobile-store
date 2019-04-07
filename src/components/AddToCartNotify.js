@@ -14,12 +14,18 @@ const styles = theme => ({
     backgroundColor: "#45A2B3",
     border: "none",
     color: "white"
+  },
+  variantDanger: {
+    backgroundColor: "red",
+    border: "none",
+    color: "white"
   }
 });
 
 class Notification extends React.Component {
   state = {
     open: false,
+    openDanger: false,
     checkCart: false
   };
 
@@ -29,7 +35,7 @@ class Notification extends React.Component {
     for (let product of products) {
       if (product.id === inCart.id) {
         product.cart = true;
-        this.setState({ open: true, checkCart: true });
+        this.setState({ open: true, checkCart: true, openDanger: false });
         break;
       }
     }
@@ -40,7 +46,7 @@ class Notification extends React.Component {
       return;
     }
 
-    this.setState({ open: false });
+    this.setState({ open: false, openDanger: false });
   };
 
   changeCart = () => {
@@ -49,7 +55,7 @@ class Notification extends React.Component {
     for (let product of products) {
       if (product.id === inCart.id) {
         product.cart = false;
-        this.setState({ open: false, checkCart: false });
+        this.setState({ open: false, checkCart: false, openDanger: true });
         break;
       }
     }
@@ -101,7 +107,7 @@ class Notification extends React.Component {
               root: classes.variant
             }
           }}
-          message={<span id="message-id"> Product is added to Cart </span>}
+          message={<span id="message-id"> Product added from cart </span>}
           action={[
             <Button
               key="undo"
@@ -111,6 +117,33 @@ class Notification extends React.Component {
             >
               UNDO
             </Button>,
+            <IconButton
+              key="close"
+              aria-label="Close"
+              color="inherit"
+              className={classes.close}
+              onClick={this.handleClose}
+            >
+              <CloseIcon />
+            </IconButton>
+          ]}
+        />
+        <Snackbar
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "left"
+          }}
+          open={this.state.openDanger}
+          autoHideDuration={2000}
+          onClose={this.handleClose}
+          ContentProps={{
+            "aria-describedby": "message-id",
+            classes: {
+              root: classes.variantDanger
+            }
+          }}
+          message={<span id="message-id"> Product is remove to Cart </span>}
+          action={[
             <IconButton
               key="close"
               aria-label="Close"

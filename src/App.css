@@ -1,0 +1,66 @@
+.page {
+    position: absolute !important;
+    left: 0px;
+    right: 0px;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* 
+.swipe-appear .swipe-enter {
+    left: -100%;
+    z-index: 1
+}
+
+.swipe-appear-active .swipe-enter.swipe-enter-active {
+    left: 0;
+    transition: left 300ms linea 150ms;
+}
+
+.swipe-exit {
+    left: 0
+}
+
+.swipe-exit.swipe-exit-active {
+    left: 100%;
+    transition: left 150ms linear
+} */
+
+.fade-appear,
+.fade-enter {
+    opacity: 0;
+    left: -100%;
+    z-index: 1;
+
+}
+
+.fade-appear-active,
+.fade-enter.fade-enter-active {
+    opacity: 1;
+    left: 0;
+    transition: all 300ms linear 100ms;
+
+}
+
+.fade-exit {
+    left: 0;
+    opacity: 0;
+}
+
+.fade-exit.fade-exit-active {
+    opacity: 0;
+    left: 0;
+    transition: all 100ms linear;
+}
+
+@keyframes fade-enter {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: 100%
+    }
+}

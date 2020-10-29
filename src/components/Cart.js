@@ -35,7 +35,7 @@ function Cart(props) {
   );
   return (
     <Grid container className={`${classes.root} page`}>
-      <h1> Yout Items </h1>
+      <h1> Your Items </h1>
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
